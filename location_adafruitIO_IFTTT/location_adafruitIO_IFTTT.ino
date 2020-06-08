@@ -38,8 +38,8 @@ And the following libraries:
 // or ethernet clients.
 #include "config.h"
 
-// set up the 'position' feed
-AdafruitIO_Feed *position = io.feed("position");
+// set up the feed
+AdafruitIO_Feed *feed = io.feed(IO_FEED_NAME);
 
 void setup()
 {
@@ -62,7 +62,7 @@ void setup()
   // the handleMessage function (defined below)
   // will be called whenever a message is
   // received from adafruit io.
-  position->onMessage(handleMessage);
+  feed->onMessage(handleMessage);
 
   // wait for an MQTT connection
   // NOTE: when blending the HTTP and MQTT API, always use the mqttStatus
@@ -75,7 +75,7 @@ void setup()
   // Because Adafruit IO doesn't support the MQTT retain flag, we can use the
   // get() function to ask IO to resend the last value for this feed to just
   // this MQTT client after the io client is connected.
-  position->get();
+  feed->get();
 
   // we are connected
   Serial.println();
@@ -97,7 +97,7 @@ void loop()
 
 }
 
-// this function is called whenever a 'position' message
+// this function is called whenever a 'feed' message
 // is received from Adafruit IO. it was attached to
 // the counter feed in the setup() function above.
 void handleMessage(AdafruitIO_Data *data) {
