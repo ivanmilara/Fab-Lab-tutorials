@@ -7,7 +7,7 @@
 
 // Add the name of the feed you want to connect to
 
-#define IO_FEED_NAME = "position"
+#define IO_FEED_NAME "position"
 
 /******************************* WIFI **************************************/
 
